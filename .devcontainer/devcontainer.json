@@ -1,0 +1,14 @@
+{
+  "name": "pass-locker",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [3000, 3306],
+  "containerEnv": {
+    "DATABASE_URL": "mysql://root:root@db:3306/pass_locker",
+    "PORT": "3000"
+  },
+  "containerUser": "node",
+  "remoteUser": "node"
+}

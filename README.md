@@ -31,6 +31,18 @@
 $ npm install
 ```
 
+## Dev Container
+
+This project includes a VS Code Dev Container configuration in `.devcontainer/`.
+
+1. Reopen the project in container (`Dev Containers: Reopen in Container`).
+2. The container will install dependencies and generate Prisma Client automatically.
+3. Start the API in watch mode:
+
+```bash
+npm run dev
+```
+
 ## Prisma + MariaDB setup
 
 Prisma uses the `mysql` datasource provider for MariaDB.
