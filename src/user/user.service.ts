@@ -4,10 +4,19 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly database: PrismaService){}
-  async create(user: CreateUserPayload) { 
+  constructor(private readonly database: PrismaService) { }
+
+  async create(user: CreateUserPayload) {
     return this.database.user.create({
-      data:{...user}
-    })
+      data: user,
+    });
+  }
+
+  findByUuid(uuid: string) {
+    return this.database.user.findUnique({ where: { uuid } });
+  }
+
+  list() {
+    return this.database.user.findMany();
   }
 }

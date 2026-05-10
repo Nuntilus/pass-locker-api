@@ -10,4 +10,9 @@ export class UserController {
   async createUser(@Body() createUserDto: CreateUserPayload) {
     return this.userService.create(createUserDto);
   }
+
+  @Get()
+  async listUser(){
+    return this.userService.list()
+  }
 }
