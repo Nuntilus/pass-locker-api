@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  uuid     String @id @default(uuid())
+  name     String @unique()
+  password String
+
+  passwords Password[]
+
+  @@map("user")
+}
+
+model Password {
+  uuid     String @id @default(uuid())
+  password String
+
+  userUuid String
+  user     User   @relation(fields: [userUuid], references: [uuid])
+
+  @@map("password")
+}
