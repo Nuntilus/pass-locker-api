@@ -11,12 +11,10 @@ export class AuthService {
 
     if (user == null) throw new UnauthorizedException();
   
-    console.log('loaded env vars: ',process.env)
-    console.log('jwt secret: ', process.env.JWT_SECRET)
-    const token: string = jwt.sign({ sub: user.uuid }, process.env.JWT_SECRET);
+    const token: string = jwt.sign({ sub: user.uuid }, process.env.JWT_SECRET!);
 
     return {
-      acccessToken: token,
+      accessToken: token,
       sub: user.uuid,
       type: 'Bearer',
     };
