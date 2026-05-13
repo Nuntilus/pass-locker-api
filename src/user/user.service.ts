@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserPayload } from './payload/create-user.payload';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserService {
@@ -24,6 +25,15 @@ export class UserService {
    */
   findByUuid(uuid: string) {
     return this.database.user.findUnique({ where: { uuid } });
+  }
+
+  /**
+   * Finds the user with the given username
+   * @param username  The username to find the user with
+   * @returns   The found user
+   */
+  findByUsername(username:string):Promise<User|null>{
+    return this.database.user.findUnique({where:{name: username}})
   }
 
   /**
